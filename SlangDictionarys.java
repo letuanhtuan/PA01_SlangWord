@@ -1,129 +1,239 @@
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Map;
+import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
-class Words {
-    public String wordname;
-    public String meaning;
 
-    Words(String wordname, String meaning) {
-        this.wordname = wordname;
-        this.meaning = meaning;
+class Dictionary {
+    static HashMap<String, List<String>> slangDict = new HashMap<String, List<String>>();
+    static HashMap<String, List<String>> meaningDict = new HashMap<String, List<String>>();
+    public static String slangDirectory = "slang.txt";
+    static String backupSlangDirectory = "backup.txt";
+    static String historyDirectory = "history.txt";
+
+    public void readDataFromFile(String fileName){
+        try{
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+            String line;
+            while((line=bufferedReader.readLine())!=null) {
+                if(line.contains("`"))
+                {
+                    String[] Word = line.split("`");
+                    String wordname = Word[0];
+                    String[] meanings = Word[1].split("\\|");
+                    for(int i = 0; i < meanings.length; i++){
+                        meanings[i] = meanings[i].trim();
+                    }
+                    List<String> definition = Arrays.asList(meanings);
+                    slangDict.put(wordname, definition);
+
+                    for(String i: definition){
+                        List<String> slang;
+                        if(!meaningDict.containsKey(i)){
+                            slang = new ArrayList<>();
+                            slang.add(wordname);
+                            meaningDict.put(i,slang);
+                        }
+                        else{
+                            slang = meaningDict.get(i);
+                            slang.add(Word[0]);
+                        }
+                    }
+                }
+            }
+            System.out.println("Import data from file successfully!");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Import data from file failed!");
+        }
+    }
+
+    public void saveSlangDict(String fileName)
+    {
+        try{
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+            StringBuffer stringBuffer = new StringBuffer();
+            for (String nameword: slangDict.keySet()){
+                stringBuffer.append(nameword);
+                stringBuffer.append("`");
+
+                for(String meaning: slangDict.get(nameword)){
+                    if (slangDict.get(nameword).indexOf(meaning)!=0) stringBuffer.append("|");
+                    stringBuffer.append(meaning);
+                }
+
+                stringBuffer.append(System.getProperty("line.separator"));
+            }
+            
+            bufferedWriter.write(stringBuffer.toString());
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public String display(String wordname){
+        wordname = wordname.toUpperCase();
+        List<String> definition = slangDict.get(wordname);
+
+        if (definition == null) {
+            return "Slang \"" + wordname + "\" not found.";
+        }
+
+        StringBuilder temp = new StringBuilder(wordname).append(": ");
+
+        for (String i : definition) {
+            if (definition.indexOf(i) != 0) temp.append(" | ");
+            temp.append(i);
+        }
+        return temp.toString();
+    }
+
+    public List<String> searchSlangDict(String slang){
+        slang = slang.toUpperCase();
+        List<String> temp = slangDict.get(slang);
+        return temp != null ? temp : Collections.emptyList();
+    }
+
+    public List<String> searchDefinitionDict(String meaning){
+        List<String> temp = null;
+        if (meaningDict.containsKey(meaning))
+        {
+            temp = meaningDict.get(meaning);
+        }
+        return temp != null ? temp : Collections.emptyList();
+    }
+
+    public void saveSlangSearchHistory(String query, StringBuilder result) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(historyDirectory,true));
+        String stringBuffer = query + result + System.getProperty("line.separator");
+
+        bufferedWriter.write(stringBuffer);
+        bufferedWriter.flush();
+        bufferedWriter.close();
+    }
+
+
+    public void showHistory() throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(historyDirectory))) {
+            String inline;
+            while ((inline = bufferedReader.readLine()) != null) {
+                System.out.println(inline);
+            }
+        }
     }
 }
 
 public class SlangDictionarys{
-    private Map<String, Words> slangWords = new HashMap<>();
-    private List<String> searchHistory = new ArrayList<>();
-
-    public void loadSlang() throws Exception {
-        try (BufferedReader br = new BufferedReader(new FileReader("slang.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parsedLine = line.split("`");
-                String wordName = parsedLine[0];
-                String meaning = parsedLine[1];
-                Words words = new Words(wordName, meaning);
-                slangWords.put(wordName, words);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveSlang() {
-        try (FileWriter writer = new FileWriter("slang.txt")) {
-            for (Map.Entry<String, Words> entry : slangWords.entrySet()) {
-                String wordName = entry.getKey();
-                String meaning = entry.getValue().meaning;
-                writer.write(wordName + "`" + meaning + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Xử lý lỗi khi ghi file.
-        }
-    }
-
-    public void searchAndUpdateHistory(String keyword, JTextArea resultArea) {
-        searchHistory.add(keyword);
-        if (slangWords.containsKey(keyword)) {
-            resultArea.setText(slangWords.get(keyword).meaning);
-        } else {
-            resultArea.setText("Slang word not found.");
-        }
-    }
-
-    public static void main(String[] args) {
-        SlangDictionarys dictionary = new SlangDictionarys();
+    static Dictionary slangDictionary = new Dictionary();
+    public static void run() throws IOException {
+        int choose;
+        Scanner br = new Scanner(System.in);
         try {
-            dictionary.loadSlang();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            System.out.println("=======================================");
+            System.out.println("           Slang Dictionary");
+            System.out.println("=======================================");
+            System.out.println("1. Search definition of a slang");
+            System.out.println("2. Search slang by definition");
+            System.out.println("3. Show search history");
+            System.out.println("4. Add a new slang word");
+            System.out.println("5. Edit a slang word");
+            System.out.println("6. Remove a slang word");
+            System.out.println("7. Reset dictionary");
+            System.out.println("8. Get a random slang word");
+            System.out.println("9. Quiz: What's that Slang");
+            System.out.println("10. Quiz: What's that Mean");
+            System.out.println("0. Save and exit");
+            System.out.println("=======================================");
+            System.out.print("Enter your choice: ");
 
-        JFrame frame = new JFrame("Slang Dictionary");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
 
-        // Tạo một JTextArea để hiển thị lịch sử tìm kiếm
-        JTextArea historyArea = new JTextArea(5, 30);
-        historyArea.setEditable(false);
+            choose = br.nextInt();
+            br.nextLine();
+            switch (choose) {
+                case 0:
+                    slangDictionary.saveSlangDict("slang.txt");
+                    System.exit(0);
+                    break;
 
-        // Tạo một JPanel để chứa nút "Search" và ô nhập liệu
-        JPanel panel = new JPanel(new FlowLayout());
-        frame.add(panel);
+                case 1:
+                    System.out.println("1 - Search definition of a slang \n Enter slang to search:");
+                    String querySlang;
+                    querySlang = br.nextLine();
+                    List<String> meanings = slangDictionary.searchSlangDict(querySlang);
+                    if (meanings == null) {
+                        System.out.println("Slang \"" + querySlang + "\" is not found");
+                    } else {
+                        System.out.print(querySlang);
+                        StringBuilder result = new StringBuilder();
+                        result.append(": ");
+                        for (String i : meanings) {
+                            if (meanings.indexOf(i) != 0) result.append(" | ");
+                            result.append(i);
+                        }
+                        System.out.println(result);
+                        slangDictionary.saveSlangSearchHistory(querySlang, result);
+                    }
+                    break;
 
-        JButton searchButton = new JButton("Search");
-        JTextField searchField = new JTextField(20);
-        JTextArea resultArea = new JTextArea(10, 30);
-        resultArea.setEditable(false);
+                case 2:
+                    System.out.println("2 - Search slang by definition \n Enter definition to search:");
+                    String queryDefinition;
+                    queryDefinition = br.nextLine();
+                    List<String> slangs = slangDictionary.searchDefinitionDict(queryDefinition);
+                    if (slangs == null) {
+                        System.out.println("Definition \"" + queryDefinition + "\" is not found");
+                    } else {
+                        System.out.print(queryDefinition);
+                        StringBuilder result = new StringBuilder();
+                        result.append(": ");
+                        for (String i : slangs) {
+                            if (slangs.indexOf(i) != 0) result.append(" | ");
+                            result.append(i);
+                        }
+                        System.out.println(result);
+                    }
+                    break;
 
-        panel.add(searchField);
-        panel.add(searchButton);
+                case 3:
+                    System.out.println("3 - Show search history \n Result search history:");
+                    slangDictionary.showHistory();
+                    break;
 
-        panel.add(resultArea);
-        panel.add(historyArea); // Thêm lịch sử vào giao diện
-
-        // ... Cài đặt ActionListener cho nút "Search" để hiển thị kết quả tìm kiếm
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String keyword = searchField.getText();
-                dictionary.searchHistory.add(keyword);
-                updateHistoryArea(historyArea, dictionary.searchHistory);
-
-                if (dictionary.slangWords.containsKey(keyword)) {
-                    resultArea.setText(dictionary.slangWords.get(keyword).meaning);
-                } else {
-                    resultArea.setText("Slang word not found.");
+                default:
+                    break;
                 }
             }
-        });
+            catch (InputMismatchException e)
+            {
+                System.out.println("Invalid input. Try again");
+                br.nextLine();
+            }
+            System.out.println("\nPress ENTER to continue");
+            br.nextLine();
 
-        frame.setVisible(true);
     }
 
-    private static void updateHistoryArea(JTextArea historyArea, List<String> history) {
-        StringBuilder historyText = new StringBuilder("Search History:\n");
-        for (String item : history) {
-            historyText.append(item).append("\n");
+    public static void main(String[] args) throws IOException {
+        slangDictionary.readDataFromFile(Dictionary.slangDirectory);
+        while(true)
+        {
+            run();
         }
-        historyArea.setText(historyText.toString());
+
     }
 }
 
