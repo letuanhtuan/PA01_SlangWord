@@ -137,43 +137,88 @@ class Dictionary {
     }
 
     public void addSlangDict(String nameword, List<String> definition, Scanner scanner) {
-    nameword = nameword.toUpperCase();
+        nameword = nameword.toUpperCase();
 
-    if (slangDict.containsKey(nameword)) {
-        System.out.println(nameword + " already exists.");
-        System.out.println("Choose an action:");
-        System.out.println("1 - Overwrite");
-        System.out.println("2 - Duplicate");
-        System.out.println("Any other keys - Cancel");
+        if (slangDict.containsKey(nameword)) {
+            System.out.println(nameword + " already exists.");
+            System.out.println("Choose an action:");
+            System.out.println("1 - Overwrite");
+            System.out.println("2 - Duplicate");
+            System.out.println("Any other keys - Cancel");
 
-        System.out.print("Your choice: ");
-        int choice;
+            System.out.print("Your choice: ");
+            int choice;
 
-        if (scanner.hasNextInt()) {
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Invalid input. Canceling operation.");
+                return;
+            }
+
+            switch (choice) {
+                case 1:
+                    slangDict.put(nameword, definition);
+                    break;
+
+                case 2:
+                    List<String> values = slangDict.get(nameword);
+                    if (values != null) {
+                        values.addAll(definition);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         } else {
-            System.out.println("Invalid input. Canceling operation.");
-            return;
+            slangDict.put(nameword, definition);
         }
-
-        switch (choice) {
-            case 1:
-                slangDict.put(nameword, definition);
-                break;
-            case 2:
-                List<String> values = slangDict.get(nameword);
-                if (values != null) {
-                    values.addAll(definition);
-                }
-                break;
-            default:
-                break;
-        }
-    } else {
-        slangDict.put(nameword, definition);
     }
-}
+
+    public void editSlangDict(String nameword){
+        nameword = nameword.toUpperCase();
+        Scanner br = new Scanner(System.in);
+        if (slangDict.containsKey(nameword)){
+            System.out.println(display(nameword));
+            System.out.println("Choose an action:");
+            System.out.println("1 - Slang");
+            System.out.println("2 - Definition");
+            System.out.println("Any other keys - Cancel");
+            System.out.print("Your choice:");
+
+            int choice = br.nextInt();
+            br.nextLine();
+
+            switch (choice){
+                case 1:
+                    System.out.println("Enter new Slang:");
+                    String newSlang = br.nextLine();
+                    slangDict.put(newSlang.toUpperCase(), slangDict.get(nameword));
+                    slangDict.remove(nameword);
+                    break;
+
+                case 2:
+                    System.out.println("Enter new meanings:");
+                    String newMean = br.nextLine();
+                    List<String> list = Arrays.asList(newMean.split("\\|"));
+                    slangDict.remove(nameword);
+                    slangDict.put(nameword, list);
+                    break;
+
+                default:
+                    break;
+            }
+            br.close();
+        } else {
+            System.out.println(nameword + " not in dictionary.");
+            br.close();
+        }
+    }
+
+
+
 
 }
 
@@ -256,10 +301,17 @@ public class SlangDictionarys{
                 case 4:
                     System.out.println("4 - Add slang word \n Enter a slang:");
                     String queryAddSlang = br.nextLine();
-                    System.out.println("Enter its meanings:");
+                    System.out.println("Enter its definition: ");
                     String queryAddDefinition = br.nextLine();
                     List<String> list4 = Arrays.asList(queryAddDefinition.split("\\|"));
                     slangDictionary.addSlangDict(queryAddSlang, list4, br);
+                    System.out.println("Operation is completed");
+                    break;
+
+                case 5:
+                    System.out.println("5 - Edit a slang word \n Enter a Slang");
+                    String queryEditSlang = br.nextLine();
+                    slangDictionary.editSlangDict(queryEditSlang);
                     System.out.println("Operation is completed");
                     break;
 
