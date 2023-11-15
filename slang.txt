@@ -1,6 +1,6 @@
-@_@`Hypnotized| dazed
+@_@`Hypnotized|dazed
 AKTF`Always Keep the Faith
->:D`Scheming| Maniacal
+>:D`Scheming|Maniacal
 <333`Multiple hearts
 ACCT`Account
 A1`Top quality
@@ -11,24 +11,24 @@ A3`Anywhere, Any time, Any place
 10-1`Radio code for 'Receiving poorly'
 4GM`Forgive me
 ADED`All Day Every Day
-AA`Alcoholics Anonymous| African-American| Automobile Association
-AAA`American Automobile Association| Battery size
+AA`Alcoholics Anonymous|African-American|Automobile Association
+AAA`American Automobile Association|Battery size
 AAB`Average At Best
-AC`Air Conditioning| Alternating Current
+AC`Air Conditioning|Alternating Current
 AAC`Apple Audio Compression
 AD`Anno Domini
-$`Dollar| money
+$`Dollar|money
 AE`American Eagle
 AF`As Fuck
 &`And
 AAF`Always and Forever
 AG`Aggressive
-8-|`Nerdy 
-AD HOC`For the specific purpose| Improvised| impromptu
+8-|`Nerdy
+AD HOC`For the specific purpose|Improvised|impromptu
 AI`Artificial Intelligence|As If
 AJ`Apple Juice
 *`Indicating a spelling correction
-AK`AK-47 Assault Rifle| Alaska
+AK`AK-47 Assault Rifle|Alaska
 ALKQN`Almighty Latin King and Queen Nation
 AAK`Alive And Kicking
 AL`Alcohol
@@ -37,9 +37,9 @@ AAP`Always A Pleasure
 2`To
 AAR`At Any Rate
 AK47`Assault rifle
-AAT`And Another Thing| At All Times
-=`Equals| Complete Transformation
-?_?`Confused| lost
+AAT`And Another Thing|At All Times
+=`Equals|Complete Transformation
+?_?`Confused|lost
 @`At
 @@@`Warning of parents nearby
 ADHD`Attention Deficit Hyperactivity Disorder
@@ -57,15 +57,15 @@ ABS`Absolutely
 ABT`About
 ABU`Anyone but Manchester United
 ALWP`Actual Laughter Was Produced
-80S`The Eighties| 1980s
+80S`The Eighties|1980s
 ._.`Emoticon Representing Apathy
 (S)`Seriously
 AISI`As I See it
 ACC`Actually
-ACE`Excellent| great
+ACE`Excellent|great
 +REP`Boost reputation
 2EZ`Too Easy
-ACK`Disgust| frustration| Acknowledgement
+ACK`Disgust|frustration|Acknowledgement
 AISB`As I Said Before
 30STM`30 Seconds To Mars (band)
 #1`Number one
@@ -75,25 +75,25 @@ ACU`Army Combat Uniform
 2MORO`Tomorrow
 Slag`Meaning
 >_<`Frustrated
->_>`Looking left| shifty look
+>_>`Looking left|shifty look
 ABDC`America's Best Dance Crew (TV show)
 ADD`Attention Deficit Disorder
 AITE`Alright
 4RL?`For Real?
 ADL`All Day Long
-ADM`Ay Dios Mio| OMG
+ADM`Ay Dios Mio|OMG
 ADN`Any Day Now
 ADR`All Due Respect
 ADS`Aim Down Sights
 ABFAB`Absolutely Fabulous
--_-`Annoyed| tired
+-_-`Annoyed|tired
 ADMIN`Administrator on forum, network etc
 (U)`Heartbroken
 /B/`4chan's random image board
-ALLOW`Let it be| forget it
+ALLOW`Let it be|forget it
 AIUI`As I Understand it
 ACID`LSD
-%)`Drunk| giddy
+%)`Drunk|giddy
 4COL`For Crying Out Loud
 AITR`Adult In The Room
 .EDU`education
@@ -110,7 +110,7 @@ AFS`Always, Forever and Seriously
 ALRATO`Later
 AGC`Automatic Gain Control
 A&E`Accident & Emergency
-A&F`Always And Forever| Abercrombie & Fitch
+A&F`Always And Forever|Abercrombie & Fitch
 AGG`Cool
 AGH`Ain't Gonna Happen
 4EVA`Forever
@@ -119,9 +119,9 @@ AGP`Accelerated Graphics Port
 A&R`Artists & Repertoire
 AGT`America's Got Talent (TV show)
 AGW`All Going Well
-<_<`Sarcasm| look left
+<_<`Sarcasm|look left
 <><`Fish
-AHA`discovery| realization
+AHA`discovery|realization
 AGRO`Aggravation
 2K9`2009
 AFRL`Away From Real Life
@@ -144,7 +144,7 @@ AIM`AOL Instant Messanger
 AIO`All In One
 >:D<`Hug
 AIKRN`All I know right now
-AIR`Blanked| ignored
+AIR`Blanked|ignored
 (^^^)`Shark
 AIT`Alright
 AIYC`As If You Care
@@ -154,16 +154,16 @@ ACLU`American Civil Liberties Union
 4SRS`For Serious?
 *$`Starbucks
 AFRO`Hairstyle from Africa
->//<`Embarrassed| blushing
+>//<`Embarrassed|blushing
 2MI`Too Much Information
 AFAIR`As Far As I Remember
 2MM`Tomorrow
-*_*`In love| dazed
+*_*`In love|dazed
 AKA`Also Known As
-AKI`Autumn| fall
+AKI`Autumn|fall
 AFAIA`As Far As I'm Aware
 AFAIC`As Far As I'm Concerned
-+1`Partner |Me too
++1`Partner|Me too
 AKS`Ask
 AFAIK`As Far As I Know
 AIMBOT`Trageting script in games
@@ -173,11 +173,11 @@ ALF`Animal Liberation Front
 ALG`Ain't Life Grand
 ALI`Best Friend
 ALK`Alcohol
-ALAS`regret| sorrow
+ALAS`regret|sorrow
 ALAP`As Long As Possible
 ALT`Alternative character in RPG
 ALU`Arithmetic Logic Unit
-ALV`Asta La Vista| goodbye
+ALV`Asta La Vista|goodbye
 2MOZ`Tomorrow
 .GOV`governments
 AMA`Ask Me Anything
@@ -192,10 +192,10 @@ AIRHEAD`Stupid person
 ALCO`Alcoholic
 2MRO`Tomorrow
 5X5`Loud and Clear
-5EVER`Because Forever Isn't Long Enough| Longer Than 4ever
+5EVER`Because Forever Isn't Long Enough|Longer Than 4ever
 AIGHT`All right
-//`Love| I love you
-4/20`April 20th| WEED smoking day
+//`Love|I love you
+4/20`April 20th|WEED smoking day
 ALL- NIGHTER`Stay Up All Night
 0.0`Surprise
 2MRW`Tomorrow
@@ -211,14 +211,14 @@ A/W`Anyway
 0.O`Raised eyebrow
 ACTA`Anti-Counterfeiting Trade Agreement
 10Q`Thank you
-@.@`Confused| surprised
+@.@`Confused|surprised
 <G>`Grin
 4YEO`For Your Eyes Only
 10X`Thanks
 2DAY`Today
 ABT2`About To
 *$$`Starbucks
-/O/`Happy| arms in the air
+/O/`Happy|arms in the air
 2K10`2010
 2U2`To You Too
 (A)`Angel (MSN)
@@ -228,23 +228,23 @@ ABT2`About To
 AC/DC`Rock Band
 AARP`American Association of Retired Persons
 ADGTH`All Dogs Go To Heaven
->,<`Angry| annoyed
-.-.`Sad| unhappy
+>,<`Angry|annoyed
+.-.`Sad|unhappy
 (!)`Sarcasm
 2B`To Be
 @}--->----`A rose
 2G`Too Good
 2M`Tomorrow
-/O\`Frustrated| hands on head
-/.\`Shy| Ashamed
+/O\`Frustrated|hands on head
+/.\`Shy|Ashamed
 2NYT`Tonight
 2U`To You
 ('_')`Emoticon Representing Boredom
 .COM`commerce
 3>`Hate
 *G*`Grin
-6_6`Looking down| Suspicious
-...`Silence| A Trailing Thought
+6_6`Looking down|Suspicious
+...`Silence|A Trailing Thought
 1AAT`One At A Time
 3G`Third Generation mobile phone network
 2NITE`Tonight
@@ -252,10 +252,10 @@ ADGTH`All Dogs Go To Heaven
 AITYD`And I Think You Do
 ALPHA`Head person of a group
 >O<`Yelling
->.<`Frustrated| angry| upset| in pain
+>.<`Frustrated|angry|upset|in pain
 /R/`Requesting
 1UP`Extra life in a game
->.>`Suspicious| wary
+>.>`Suspicious|wary
 4G`4th Generation
 .NET`network providers
 4M`Forum
@@ -283,7 +283,7 @@ A7A`Frusration, anger
 8)`Cool
 8*`Kiss
 A7X`Avenged Sevenfold (band)
-AIN'T`Am not| are not| is not
+AIN'T`Am not|are not|is not
 (H)`Cool dude emoticon (MSN)
 ALIHAL`At Least I Have A Life
 <.<`Shifty look
@@ -298,20 +298,20 @@ AAWY`And Also With You
 ?4U`Question For You
 ADEROL`Drug that helps you focus
 :$`Embarrassed
-:&`Tongue tied| speechless
+:&`Tongue tied|speechless
 .44`.44 Magnum
-:(`Unhappy| sad
+:(`Unhappy|sad
 :)`Happy
 9JA`Nigeria
 :*`Kiss
 AAYF`As Always, Your Friend
 :/`Sarcasm
-:0`Surprised| shocked
-:3`Cute| goofy face
+:0`Surprised|shocked
+:3`Cute|goofy face
 ALCHY`Alcoholic
-:9`Yum| licking
+:9`Yum|licking
 /THREAD`End of a thread on a forum
-:<`Sad| frowning
+:<`Sad|frowning
 8|`Balls To The Wall
 :>`Mischievous smile
 :?`Confused
@@ -325,7 +325,7 @@ AEAP`As Early As Possible
 AIIT`Alright
 ;)`Wink
 :J`Smirk
-:K`Vampire teeth| Snake's tongue
+:K`Vampire teeth|Snake's tongue
 :L`Laughing
 .MIL`military
 :-(`Sad
@@ -341,19 +341,19 @@ AKML`Avada Kedavra My Life (Harry Potter)
 :T`Side smile
 AIIC`As If I Care
 :X`Zipped lips
-;;`Sad| Confused
-:[`Sad| Vampire
+;;`Sad|Confused
+:[`Sad|Vampire
 :\`Emoticon Meaning Confusion
 :]`Happy
 ({)(})`Two People Hugging
-*O*`Confused| surprised| shocked
+*O*`Confused|surprised|shocked
 (K)`Kiss (MSN)
 *.*`Every file on a computer
 ;P;`Misspelling of LOL
 <#`Misspelling of <3
 ;D`Wink
 2G2BT`Too Good To Be True
-:-D`Laughing| Big Smile
+:-D`Laughing|Big Smile
 :O)`Clown nose smiley face
 ;O`Joking
 ;P`Winking and sticking tongue out
@@ -362,18 +362,18 @@ AIIC`As If I Care
 <4`More than love (<3)
 4CHAN`Internet message/image board
 :-P`Sticking Their Tongue Out
-<>`Not equal| No comment
-:|`Disgust| disapproval| not funny
+<>`Not equal|No comment
+:|`Disgust|disapproval|not funny
 (L)`Love heart (MSN)
 <B`Hate
 AGGY`Aggitated
 =)`Happy
 =*`Kiss
-=0`Surprised| shocked
+=0`Surprised|shocked
 10CHAR`Padding where at least 10 characters are required
-=3`Cute| goofy face
+=3`Cute|goofy face
 ADAD`Another Day Another Dollar
-/:)`Flirtation |Sign Of Suspicion
+/:)`Flirtation|Sign Of Suspicion
 =D`:D
 =F`Vampire
 =I`Indifference
@@ -393,7 +393,7 @@ AFFA`Angels Forever, Forever Angels
 4E4`Forever
 =W=`Weezer (band)
 *HUG*`A Cyberhug
-8-)`Cool 
+8-)`Cool
 AIMO`Idiot
 AIMH`Always In My Heart
 ??`What?
@@ -403,7 +403,7 @@ AIMH`Always In My Heart
 ADDY`Address
 >:(`Angry
 >:)`Evil Grin
-AINT`Am not| are not| is not
+AINT`Am not|are not|is not
 AINEC`And It's Not Even Close
 3DG`Three Days Grace (band)
 2BH`To Be Honest

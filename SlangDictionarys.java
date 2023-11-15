@@ -135,6 +135,46 @@ class Dictionary {
             }
         }
     }
+
+    public void addSlangDict(String nameword, List<String> definition, Scanner scanner) {
+    nameword = nameword.toUpperCase();
+
+    if (slangDict.containsKey(nameword)) {
+        System.out.println(nameword + " already exists.");
+        System.out.println("Choose an action:");
+        System.out.println("1 - Overwrite");
+        System.out.println("2 - Duplicate");
+        System.out.println("Any other keys - Cancel");
+
+        System.out.print("Your choice: ");
+        int choice;
+
+        if (scanner.hasNextInt()) {
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        } else {
+            System.out.println("Invalid input. Canceling operation.");
+            return;
+        }
+
+        switch (choice) {
+            case 1:
+                slangDict.put(nameword, definition);
+                break;
+            case 2:
+                List<String> values = slangDict.get(nameword);
+                if (values != null) {
+                    values.addAll(definition);
+                }
+                break;
+            default:
+                break;
+        }
+    } else {
+        slangDict.put(nameword, definition);
+    }
+}
+
 }
 
 public class SlangDictionarys{
@@ -211,6 +251,16 @@ public class SlangDictionarys{
                 case 3:
                     System.out.println("3 - Show search history \n Result search history:");
                     slangDictionary.showHistory();
+                    break;
+                
+                case 4:
+                    System.out.println("4 - Add slang word \n Enter a slang:");
+                    String queryAddSlang = br.nextLine();
+                    System.out.println("Enter its meanings:");
+                    String queryAddDefinition = br.nextLine();
+                    List<String> list4 = Arrays.asList(queryAddDefinition.split("\\|"));
+                    slangDictionary.addSlangDict(queryAddSlang, list4, br);
+                    System.out.println("Operation is completed");
                     break;
 
                 default:
