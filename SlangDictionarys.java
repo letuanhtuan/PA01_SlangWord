@@ -217,7 +217,33 @@ class Dictionary {
         }
     }
 
+    public void removeSlangDict(String slang){
+        slang = slang.toUpperCase();
 
+        if (slangDict.containsKey(slang)){
+            System.out.println(this.display(slang));
+            System.out.println("Confirm remove " + slang +" from dictionary");
+            System.out.print("(Y/N): ");
+
+            Scanner input = new Scanner(System.in);
+            String choice = input.nextLine();
+            choice = choice.trim();
+            input.close();
+
+            if(choice.equals("Y")) {
+                slangDict.remove(slang);
+                System.out.println(slang + " removed");
+            }
+        }
+        else{
+            System.out.println(slang+" not in dictionary.");
+        }
+    }
+
+    public void resetDictionary(){
+        this.readDataFromFile(backupSlangDirectory);
+        this.saveSlangDict(slangDirectory);
+    }
 
 
 }
@@ -309,10 +335,21 @@ public class SlangDictionarys{
                     break;
 
                 case 5:
-                    System.out.println("5 - Edit a slang word \n Enter a Slang");
+                    System.out.println("5 - Edit a slang word \n Enter a Slang: ");
                     String queryEditSlang = br.nextLine();
                     slangDictionary.editSlangDict(queryEditSlang);
                     System.out.println("Operation is completed");
+                    break;
+                
+                case 6:
+                    System.out.println("6 - Remove a slang word \n Enter a Slang: ");
+                    String queryRemove = br.nextLine();
+                    slangDictionary.removeSlangDict(queryRemove);
+                    break;
+
+                case 7:
+                    System.out.println("7 - Reset dictionary");
+                    slangDictionary.resetDictionary();
                     break;
 
                 default:
