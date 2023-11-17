@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 
@@ -200,7 +201,7 @@ class Dictionary {
                     break;
 
                 case 2:
-                    System.out.println("Enter new meanings:");
+                    System.out.println("Enter new definition:");
                     String newMean = br.nextLine();
                     List<String> list = Arrays.asList(newMean.split("\\|"));
                     slangDict.remove(nameword);
@@ -246,6 +247,16 @@ class Dictionary {
     }
 
 
+    public String randomSlang() {
+        List<String> keys = new ArrayList<>(slangDict.keySet());
+    
+        if (keys.isEmpty()) {
+            return "No slang in the dictionary.";
+        }
+
+        int randomIndex = ThreadLocalRandom.current().nextInt(keys.size());
+        return keys.get(randomIndex);
+}
 }
 
 public class SlangDictionarys{
@@ -266,7 +277,7 @@ public class SlangDictionarys{
             System.out.println("7. Reset dictionary");
             System.out.println("8. Get a random slang word");
             System.out.println("9. Quiz: What's that Slang");
-            System.out.println("10. Quiz: What's that Mean");
+            System.out.println("10. Quiz: What's that Definition");
             System.out.println("0. Save and exit");
             System.out.println("=======================================");
             System.out.print("Enter your choice: ");
@@ -350,6 +361,12 @@ public class SlangDictionarys{
                 case 7:
                     System.out.println("7 - Reset dictionary");
                     slangDictionary.resetDictionary();
+                    break;
+
+                case 8:
+                    System.out.println("8 - Random slang word");
+                    String randomSlangDict = slangDictionary.randomSlang();
+                    System.out.println(slangDictionary.display(randomSlangDict));
                     break;
 
                 default:
