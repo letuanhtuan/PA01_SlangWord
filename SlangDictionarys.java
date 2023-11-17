@@ -256,7 +256,55 @@ class Dictionary {
 
         int randomIndex = ThreadLocalRandom.current().nextInt(keys.size());
         return keys.get(randomIndex);
-}
+    }
+
+    public void quizRamdomSlang() {
+        String slang = this.randomSlang();
+        String correctAnswer = slangDict.get(slang).get(0);
+        List<String> options = generateOptions(correctAnswer);
+
+        displayOptions(slang, options);
+
+        int userChoice = getUserChoice();
+        evaluateUserChoice(userChoice, options, correctAnswer);
+    }
+
+    private List<String> generateOptions(String correctAnswer) {
+        List<String> options = new ArrayList<>();
+        options.add(correctAnswer);
+
+        while (options.size() < 4) {
+            String option = slangDict.get(this.randomSlang()).get(0);
+            if (!options.contains(option)) {
+                options.add(option);
+            }
+        }
+
+        Collections.shuffle(options);
+        return options;
+    }
+
+    private void displayOptions(String slang, List<String> options) {
+        System.out.println("What does " + slang + " definition?");
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println(i + 1 + " - " + options.get(i));
+        }
+    }
+
+    private int getUserChoice() {
+        Scanner br = new Scanner(System.in);
+        System.out.print("Your choice: ");
+        return br.nextInt();
+    }
+
+    private void evaluateUserChoice(int userChoice, List<String> options, String correctAnswer) {
+        if (userChoice - 1 == options.indexOf(correctAnswer)) {
+            System.out.println("Correct");
+        } else {
+            System.out.println("Wrong");
+            System.out.println("Correct answer: " + correctAnswer);
+        }
+    }
 }
 
 public class SlangDictionarys{
@@ -367,6 +415,11 @@ public class SlangDictionarys{
                     System.out.println("8 - Random slang word");
                     String randomSlangDict = slangDictionary.randomSlang();
                     System.out.println(slangDictionary.display(randomSlangDict));
+                    break;
+
+
+                case 9:
+                    slangDictionary.quizRamdomSlang();
                     break;
 
                 default:
