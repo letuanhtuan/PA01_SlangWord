@@ -261,15 +261,15 @@ class Dictionary {
     public void quizRamdomSlang() {
         String slang = this.randomSlang();
         String correctAnswer = slangDict.get(slang).get(0);
-        List<String> options = generateOptions(correctAnswer);
+        List<String> options = generateOptions1(correctAnswer);
 
         displayOptions(slang, options);
 
-        int userChoice = getUserChoice();
-        evaluateUserChoice(userChoice, options, correctAnswer);
+        int userChoice = getUserChoice1();
+        evaluateUserChoice1(userChoice, options, correctAnswer);
     }
 
-    private List<String> generateOptions(String correctAnswer) {
+    private List<String> generateOptions1(String correctAnswer) {
         List<String> options = new ArrayList<>();
         options.add(correctAnswer);
 
@@ -291,13 +291,62 @@ class Dictionary {
         }
     }
 
-    private int getUserChoice() {
+    private int getUserChoice1() {
         Scanner br = new Scanner(System.in);
         System.out.print("Your choice: ");
         return br.nextInt();
     }
 
-    private void evaluateUserChoice(int userChoice, List<String> options, String correctAnswer) {
+    private void evaluateUserChoice1(int userChoice, List<String> options, String correctAnswer) {
+        if (userChoice - 1 == options.indexOf(correctAnswer)) {
+            System.out.println("Correct");
+        } else {
+            System.out.println("Wrong");
+            System.out.println("Correct answer: " + correctAnswer);
+        }
+    }
+
+
+    public void quizRamdomDefinition() {
+        String correctAnswer = this.randomSlang();
+        String meaning = slangDict.get(correctAnswer).get(0);
+        List<String> options = generateOptions2(correctAnswer);
+
+        displayOptionsForMeaning(meaning, options);
+
+        int userChoice = getUserChoice2();
+        evaluateUserChoice2(userChoice, options, correctAnswer);
+}
+
+    private List<String> generateOptions2(String correctAnswer) {
+        List<String> options = new ArrayList<>();
+        options.add(correctAnswer);
+
+        while (options.size() < 4) {
+            String option = this.randomSlang();
+            if (!options.contains(option)) {
+                options.add(option);
+            }
+        }
+
+        Collections.shuffle(options);
+        return options;
+    }
+
+    private void displayOptionsForMeaning(String definition, List<String> options) {
+        System.out.println("What is the slang for " + definition + "?");
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println(i + 1 + " - " + options.get(i));
+        }
+    }
+
+    private int getUserChoice2() {
+        Scanner br = new Scanner(System.in);
+        System.out.print("Your choice: ");
+        return br.nextInt();
+    }
+
+    private void evaluateUserChoice2(int userChoice, List<String> options, String correctAnswer) {
         if (userChoice - 1 == options.indexOf(correctAnswer)) {
             System.out.println("Correct");
         } else {
@@ -420,6 +469,10 @@ public class SlangDictionarys{
 
                 case 9:
                     slangDictionary.quizRamdomSlang();
+                    break;
+
+                case 10:
+                    slangDictionary.quizRamdomDefinition();
                     break;
 
                 default:
