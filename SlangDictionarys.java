@@ -18,8 +18,8 @@ class Dictionary {
     static HashMap<String, List<String>> slangDict = new HashMap<String, List<String>>();
     static HashMap<String, List<String>> meaningDict = new HashMap<String, List<String>>();
     public static String slangDirectory = "slang.txt";
-    static String backupSlangDirectory = "backup.txt";
-    static String historyDirectory = "history.txt";
+    public static String backupSlangDirectory = "backup.txt";
+    public static String historyDirectory = "history.txt";
 
     public void readDataFromFile(String fileName){
         try{
@@ -164,10 +164,28 @@ class Dictionary {
                     break;
 
                 case 2:
-                    List<String> values = slangDict.get(nameword);
-                    if (values != null) {
-                        values.addAll(definition);
+                    System.out.println("");
+                    String tempSlang = nameword + "__ver2";
+                    ArrayList<String> definition1 = new ArrayList<>();
+                    int numberOfDef = 0;
+                    do {
+                        System.out.print("Input number of definitions for new slang: ");
+                        numberOfDef = scanner.nextInt();
+                        scanner.nextLine();
+                    } while (numberOfDef <= 0);
+
+                    if (numberOfDef == 1) {
+                        System.out.print("Input definition for new slang: ");
+                        String def = scanner.nextLine();
+                        definition1.add(def);
+                    } else {
+                        for (int i = 0; i < numberOfDef; i++) {
+                            System.out.print("Input definition " + (i + 1) + " for new slang: ");
+                            String def = scanner.nextLine();
+                            definition1.add(def);
+                        }
                     }
+                    slangDict.put(tempSlang, definition1);
                     break;
 
                 default:
@@ -183,25 +201,25 @@ class Dictionary {
         Scanner br = new Scanner(System.in);
         if (slangDict.containsKey(nameword)){
             System.out.println(display(nameword));
-            System.out.println("Choose an action:");
+            System.out.println("Choose an action: ");
             System.out.println("1 - Slang");
             System.out.println("2 - Definition");
             System.out.println("Any other keys - Cancel");
-            System.out.print("Your choice:");
+            System.out.print("Your choice: ");
 
             int choice = br.nextInt();
             br.nextLine();
 
             switch (choice){
                 case 1:
-                    System.out.println("Enter new Slang:");
+                    System.out.print("Enter new Slang: ");
                     String newSlang = br.nextLine();
                     slangDict.put(newSlang.toUpperCase(), slangDict.get(nameword));
                     slangDict.remove(nameword);
                     break;
 
                 case 2:
-                    System.out.println("Enter new definition:");
+                    System.out.print("Enter new definition: ");
                     String newMean = br.nextLine();
                     List<String> list = Arrays.asList(newMean.split("\\|"));
                     slangDict.remove(nameword);
@@ -211,13 +229,11 @@ class Dictionary {
                 default:
                     break;
             }
-            br.close();
         } else {
             System.out.println(nameword + " not in dictionary.");
-            br.close();
         }
     }
-
+    
     public void removeSlangDict(String slang){
         slang = slang.toUpperCase();
 
@@ -226,10 +242,9 @@ class Dictionary {
             System.out.println("Confirm remove " + slang +" from dictionary");
             System.out.print("(Y/N): ");
 
-            Scanner input = new Scanner(System.in);
-            String choice = input.nextLine();
+            Scanner br = new Scanner(System.in);
+            String choice = br.nextLine();
             choice = choice.trim();
-            input.close();
 
             if(choice.equals("Y")) {
                 slangDict.remove(slang);
@@ -389,7 +404,7 @@ public class SlangDictionarys{
                     break;
 
                 case 1:
-                    System.out.println("1 - Search definition of a slang \n Enter slang to search:");
+                    System.out.print("1 - Search definition of a slang \nEnter slang to search: ");
                     String querySlang;
                     querySlang = br.nextLine();
                     List<String> meanings = slangDictionary.searchSlangDict(querySlang);
@@ -409,7 +424,7 @@ public class SlangDictionarys{
                     break;
 
                 case 2:
-                    System.out.println("2 - Search slang by definition \n Enter definition to search:");
+                    System.out.print("2 - Search slang by definition \nEnter definition to search: ");
                     String queryDefinition;
                     queryDefinition = br.nextLine();
                     List<String> slangs = slangDictionary.searchDefinitionDict(queryDefinition);
@@ -433,9 +448,9 @@ public class SlangDictionarys{
                     break;
                 
                 case 4:
-                    System.out.println("4 - Add slang word \n Enter a slang:");
+                    System.out.print("4 - Add slang word \nEnter a slang: ");
                     String queryAddSlang = br.nextLine();
-                    System.out.println("Enter its definition: ");
+                    System.out.print("Enter its definition: ");
                     String queryAddDefinition = br.nextLine();
                     List<String> list4 = Arrays.asList(queryAddDefinition.split("\\|"));
                     slangDictionary.addSlangDict(queryAddSlang, list4, br);
@@ -443,14 +458,14 @@ public class SlangDictionarys{
                     break;
 
                 case 5:
-                    System.out.println("5 - Edit a slang word \n Enter a Slang: ");
+                    System.out.print("5 - Edit a slang word \nEnter a Slang: ");
                     String queryEditSlang = br.nextLine();
                     slangDictionary.editSlangDict(queryEditSlang);
                     System.out.println("Operation is completed");
                     break;
                 
                 case 6:
-                    System.out.println("6 - Remove a slang word \n Enter a Slang: ");
+                    System.out.print("6 - Remove a slang word \nEnter a Slang: ");
                     String queryRemove = br.nextLine();
                     slangDictionary.removeSlangDict(queryRemove);
                     break;
