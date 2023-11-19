@@ -1,4 +1,4 @@
-![image](https://github.com/letuanhtuan/PA01_SlangWord/assets/95281235/bd3ff2b8-2b8c-4b85-96ec-e89e73b3405f)# PA01_SlangWord
+# PA01_SlangWord
 Họ tên: Lê Tự Anh Tuấn
 MSSV: 21127195
 Link video: https://youtu.be/aG_BwTntpTo
